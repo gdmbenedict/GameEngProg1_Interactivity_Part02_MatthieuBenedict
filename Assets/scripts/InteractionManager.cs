@@ -69,8 +69,7 @@ public class InteractionManager : MonoBehaviour
                 StartDialogue(interactableObjects.First().getDialogue(), interactableObjects.First().name);
             }
         }
-
-        if (Input.GetKeyDown(interactButton) && inDialogue)
+        else if (Input.GetKeyDown(interactButton) && inDialogue)
         {
             NextDialogue();
         }
@@ -83,7 +82,7 @@ public class InteractionManager : MonoBehaviour
     {
         if (other.CompareTag("Interactable"))
         {
-            Debug.Log("Interactable Detected");
+            //Debug.Log("Interactable Detected");
 
             interactableObjects.Add(other.gameObject.GetComponent<InteractableObject>());
             other.GetComponent<InteractableObject>().ShowPrompt(interactButton.ToString());
@@ -95,7 +94,7 @@ public class InteractionManager : MonoBehaviour
     {
         if (other.CompareTag("Interactable"))
         {
-            Debug.Log("Interactables No Longer Detected");
+            //Debug.Log("Interactables No Longer Detected");
 
             interactableObjects.Remove(other.gameObject.GetComponent<InteractableObject>());
             other.GetComponent<InteractableObject>().HidePrompt();
@@ -185,7 +184,6 @@ public class InteractionManager : MonoBehaviour
     {
         if (dialogue.Length > 0)
         {
-            //Debug.Log("dialogue called");
 
             inDialogue = true;
             gameManager.DisablePlayerControls();
@@ -197,8 +195,8 @@ public class InteractionManager : MonoBehaviour
                 this.dialogue.Enqueue(s);
             }
 
-            SetDialogueText();
             uiManager.EnableDialogueUI();
+            NextDialogue();
         }        
     }
 
