@@ -8,7 +8,8 @@ public class InteractableObject : MonoBehaviour
     public enum InteractionType
     {
         pickup,
-        info
+        info,
+        dialogue
     }
 
     [Header("Interaction Data")]
@@ -23,6 +24,8 @@ public class InteractableObject : MonoBehaviour
     [SerializeField] private Color textColor = Color.white;
     [SerializeField] private TextAlignmentOptions alignmentOptions = TextAlignmentOptions.Center;
 
+    [Header("Dialogue")]
+    [SerializeField] private string[] dialogue;
 
     private void Awake()
     {
@@ -102,6 +105,18 @@ public class InteractableObject : MonoBehaviour
         
         Destroy(gameObject);
     }
+
+    public InteractionType GetInteractionType()
+    {
+        return interactionType;
+    }
+
+    public string[] getDialogue()
+    {
+        return dialogue;
+    }
+
+
 
     
 

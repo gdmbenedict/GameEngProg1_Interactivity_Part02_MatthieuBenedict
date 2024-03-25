@@ -15,8 +15,12 @@ public class LevelTeleporter : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("teleporter triggered");
+        //Debug.Log("teleporter triggered");
 
-        levelManager.ChangeScene(sceneName);
+        if (other.tag == "Player")
+        {
+            levelManager.ChangeScene(sceneName);
+        }
+        
     }
 }

@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     public LevelManager levelManager;
     public UIManager uiManager;
+    public InteractionManager interactionManager;
 
     [Header("Game States")]
 
@@ -30,7 +31,6 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     private SpriteRenderer playerSpriteRenderer;
     private PlayerController playerController;
-    public GameObject interactionManager;
 
     //sets default state for the game manager
     public void Awake()
@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
             //turning on player
             playerSpriteRenderer.enabled = true;
             playerController.enabled = true;
-            interactionManager.SetActive(true);
+            interactionManager.enabled = true;
 
             SpawnPlayer();
         }
@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
             //turning off player
             playerSpriteRenderer.enabled = false;
             playerController.enabled = false;
-            interactionManager.SetActive(false);
+            interactionManager.enabled = false;
 
             //reset player position
             player.transform.position = Vector3.zero;
@@ -202,7 +202,7 @@ public class GameManager : MonoBehaviour
         //turning off player
         playerSpriteRenderer.enabled = false;
         playerController.enabled = false;
-        interactionManager.SetActive(false);
+        interactionManager.enabled = false;
     }
 
     private void UpdateMainMenuState()
@@ -224,7 +224,7 @@ public class GameManager : MonoBehaviour
             //turning on player
             playerSpriteRenderer.enabled = true;
             playerController.enabled = true;
-            interactionManager.SetActive(true);
+            interactionManager.enabled = true;
         }
         else
         {
@@ -332,6 +332,13 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.Gameplay:
+
+                if (interactionManager.getInDialogue())
+                {
+                    interactionManager.EndDialogue();
+                    break;
+                }
+
                 ChangeGameState(GameState.Paused);
                 break;
 
@@ -427,6 +434,16 @@ public class GameManager : MonoBehaviour
         {
             ChangeGameState(GameState.GameOver);
         }
+    }
+
+    public void DisablePlayerControls()
+    {
+        playerController.enabled = false;
+    }
+
+    public void EnablePlayerControls()
+    {
+        playerController.enabled = true;
     }
 
 }

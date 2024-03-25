@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     public GameObject gameWinScreen;
     public GameObject gameOverScreen;
     public GameObject OptionsMenu;
+    public GameObject DialogueUI;
 
     private void Awake()
     {
@@ -105,6 +106,19 @@ public class UIManager : MonoBehaviour
 
         //sets new screen state
         screenState = newScreenState;
+    }
+
+    public void EnableDialogueUI()
+    {
+        if (screenState == ScreenState.GamePlayHUD)
+        {
+            DialogueUI.SetActive(true);
+        }
+    }
+
+    public void DisableDialogueUI()
+    {
+        DialogueUI.SetActive(false);
     }
 
 }
