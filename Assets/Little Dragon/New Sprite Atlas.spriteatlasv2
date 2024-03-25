@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!612988286 &1
+SpriteAtlasAsset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 2
+  m_MasterAtlas: {fileID: 0}
+  m_ImporterData:
+    packables:
+    - {fileID: 2800000, guid: 69b98d0372cc6244897d38a2d4d155a3, type: 3}
+    - {fileID: 2800000, guid: aa67258db973beb4a83d9f6ce89784a4, type: 3}
+    - {fileID: 2800000, guid: fc95b67d72881344384d1e3c6146ac75, type: 3}
+    - {fileID: 2800000, guid: 50855cf67b8984d4c983596b9f2f79a4, type: 3}
+    - {fileID: 2800000, guid: 15d6ae3cc3390a747bd4ebbde4bdeb11, type: 3}
+    - {fileID: 2800000, guid: c5b02553ba3de3748b28c41d82dd6c45, type: 3}
+  m_IsVariant: 0
